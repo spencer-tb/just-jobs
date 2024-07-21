@@ -1,0 +1,36 @@
+.recruiterColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+    margin: calc(2*var(--banner-spacing)) auto;
+    padding: 0 var(--banner-spacing);
+}
+.recruiterColumn > .p {
+    margin: 0;
+}
+
+.recruiterColumn-cta {
+    padding: 0 var(--banner-spacing);
+}
+
+.recruiterColumn-logos-wrapper {
+    text-align: center;
+}
+
+.recruiterColumnLogos {
+    padding: var(--large-spacing) calc(2*var(--banner-spacing));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--banner-spacing);
+}
+
+.logoContainer {
+    height: 40px;
+    width: 100%;
+}
+
+.recruiterColumnLogo {
+    max-height: 100%;
+    max-width: 100%;
+}

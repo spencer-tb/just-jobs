@@ -1,0 +1,152 @@
+/* TODO: refactor, fix for dark mode, remove redundacies */
+:root {
+    /* Golden Ratio */
+    --golden-ratio: 1.618;
+
+    /* Spacing */
+    --base-spacing: 10px;
+    --tiny-spacing: calc(0.25 * var(--small-spacing));
+    --small-spacing: calc(var(--base-spacing) / var(--golden-ratio));
+    --medium-spacing: calc(2 * var(--small-spacing));
+    --large-spacing: calc(4 * var(--small-spacing));
+    --banner-spacing: calc(8 * var(--small-spacing));
+    --image-spacing: calc(12 * var(--small-spacing));
+    --side-spacing: calc(16 * var(--small-spacing));
+
+    /* Width */
+    /* --search-width: calc(20 * var(--medium-spacing)); */
+    --search-width: 400px;
+    --nav-item-width: calc(var(--small-spacing)*22);
+
+    /* -- Colors -- */
+    --accent-color: rgba(60, 70, 255, 1);
+    --accent-hl: rgba(0, 0, 255, 1);
+
+    /* Wrap Colors: Header & Footer */
+    --light-wrap-tx: rgba(254, 118, 0, 1);
+    --dark-wrap-tx: rgba(210, 146, 255, 1);
+    --wrap-bg-r: 255;
+    --wrap-bg-g: 255;
+    --wrap-bg-b: 219;
+    --wrap-bg: rgba(var(--wrap-bg-r),
+            var(--wrap-bg-g),
+            var(--wrap-bg-b),
+            1);
+    --wrap-bg-factor: 10;
+    --wrap-hl: rgba(calc(var(--wrap-bg-r) - var(--wrap-bg-factor)),
+            calc(var(--wrap-bg-g) - var(--wrap-bg-factor)),
+            calc(var(--wrap-bg-b) - var(--wrap-bg-factor)),
+            1);
+
+    /* Main Colors: Center Page */
+    --light-tx: rgba(0, 0, 0, 1);
+    --dark-tx: rgba(255, 255, 255, 1);
+
+    --light-bg-r: 255;
+    --light-bg-g: 255;
+    --light-bg-b: 255;
+    --light-bg: rgba(var(--light-bg-r),
+            var(--light-bg-g),
+            var(--light-bg-b),
+            1);
+    --light-bg-factor: 10;
+    --light-hl: rgba(calc(var(--light-bg-g) - var(--light-bg-factor)),
+            calc(var(--light-bg-r) - var(--light-bg-factor)),
+            calc(var(--light-bg-b) - var(--light-bg-factor)),
+            1);
+
+    --dark-bg-r: 0;
+    --dark-bg-g: 0;
+    --dark-bg-b: 0;
+    --dark-bg: rgba(var(--dark-bg-r),
+            var(--dark-bg-g),
+            var(--dark-bg-b),
+            1);
+    --dark-bg-factor: 20;
+    --dark-hl: rgba(calc(var(--dark-bg-g) + var(--dark-bg-factor)),
+            calc(var(--dark-bg-r) + var(--dark-bg-factor)),
+            calc(var(--dark-bg-b) + var(--dark-bg-factor)),
+            1);
+
+
+
+    /* Default Fonts */
+    --base-font-size: calc(16.18px / var(--golden-ratio));
+    --font-size-0: calc(1.15 * var(--base-font-size));
+    --font-size-1: calc(1.25 * var(--base-font-size));
+    --font-size-2: calc(1.6 * var(--base-font-size));
+    --font-size-3: calc(2.0 * var(--base-font-size));
+    --font-size-4: calc(2.3 * var(--base-font-size));
+    --font-size-x: calc(5.0 * var(--base-font-size));
+
+    /* Border Defaults */
+    --border-radius-big: 10px;
+    --border-radius-small: 0.375rem;
+    --base-transition: all 140ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+}
+
+:root {
+    /* Light mode */
+    --wrap-tx-color: var(--light-wrap-tx);
+    --tx-color: var(--light-tx);
+    --bg-color: var(--light-bg);
+    --hl-color: var(--light-hl);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark mode */
+        --wrap-tx-color: var(--dark-wrap-tx);
+        --tx-color: var(--dark-tx);
+        --bg-color: var(--dark-bg);
+        --hl-color: var(--dark-hl);
+    }
+}
+
+.mainContent {
+    color: var(--tx-color);
+    background: var(--bg-color);
+}
+
+@media all and (max-width: 600px) {
+    body {
+        max-width: 100%;
+    }
+}
+
+/* Set default styles for the entire page */
+body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: Söhne, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica Neue, Arial, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        color: var(--wrap-tx-color);
+        background: var(--wrap-bg);
+        margin: 0;
+}
+
+/* Set default zoom level to 100% for screens narrower than 768px */
+@media only screen and (max-width: 767px) {
+        body {
+                zoom: 100%;
+        }
+}
+
+/* Set default styles for paragraphs */
+p {
+        margin-bottom: 0;
+}
+
+/* Set default styles for unordered lists */
+ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+}
+
+/* Set default styles for links */
+a,
+link {
+        color: var(--text-color);
+        text-decoration: none;
+}

@@ -1,0 +1,27 @@
+.footer {
+    font-size: var(--font-size-1);
+    width: 60%;
+    padding: var(--large-spacing);
+    bottom: 0;
+}
+
+
+@media all and (max-width: 800px) {
+    .footer {
+        padding: var(--small-spacing);
+        /* width: 100%; */
+    }
+    .footer>p {
+        /* text-overflow: break-word; */
+        /* width: 80%; */
+    }
+
+}
+@media all and (max-width: 600px) {
+
+    .footerText {
+        margin-left: var(--medium-spacing);
+        margin-right: var(--medium-spacing);
+    }
+
+}

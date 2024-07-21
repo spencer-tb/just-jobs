@@ -1,0 +1,190 @@
+.banner {
+    display: flex; 
+    flex-direction: column;
+    margin: var(--banner-spacing) auto;
+    padding: 0 var(--image-spacing);
+    margin-top: calc(2*var(--banner-spacing));
+    max-width: 1200px;
+    caret-color: transparent;
+    color: var(--wrap-tx-color);
+    background: var(--wrap-bg);
+}
+
+.bannerTitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: var(--font-size-x);
+    font-weight: 500;
+    margin: 0;
+    gap: var(--medium-spacing);
+}
+
+.bannerAnimation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 60px;
+    font-size: var(--font-size-x);
+    font-weight: 500;
+    margin: 0;
+    gap: var(--medium-spacing);
+}
+.bannerAnimation > .circle {
+    animation: flicker 0.75s infinite;
+    font-size: calc(0.8*var(--font-size-x));
+}
+
+.bannerMissionStatement, .bannerTitleHome {
+    font-size: var(--font-size-4);
+    font-weight: 400;
+    margin-top: var(--small-spacing);
+}
+
+.bannerEmailSignup {
+    margin-top: var(--banner-spacing);
+    display: flex;
+    align-items: center;
+    gap: var(--banner-spacing);
+}
+.bannerEmailSignupForm {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: var(--medium-spacing);
+}
+.bannerEmailSignupTitle {
+    font-size: var(--font-size-1);
+    font-weight: 500;
+}
+.bannerEmailSignupInput {
+    padding: 0;
+    font-size: var(--font-size-2);
+    font-weight: 500;
+    width: 250px;
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 2px solid var(--wrap-tx-color);
+    caret-color: var(--wrap-tx-color);
+    color: inherit;
+}
+.bannerEmailSignupButton {
+    margin-top: var(--medium-spacing);
+    font-size: var(--font-size-2);
+    font-weight: 600;
+    background: var(--accent-color);
+    border: none;
+    border-radius: var(--border-radius-small);
+    padding: calc(0.8 * var(--medium-spacing)) var(--large-spacing);
+    cursor: pointer;
+    color: white;
+}
+.bannerEmailSignupButton:hover {
+    background-color: var(--accent-hl);
+}
+
+
+@keyframes flicker {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.bannerComp {
+    margin-top: calc(2*var(--banner-spacing));
+    display: flex;
+    justify-content: center;
+}
+.bannerCompColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--large-spacing);
+}
+.bannerCompText {
+    font-size: var(--font-size-2);
+    font-weight: 500;
+}
+.bannerCompLogos {
+    display: flex;
+    align-items: center;
+    gap: var(--image-spacing);
+}
+.bannerCompLogo {
+    height: var(--banner-spacing);
+}
+.bannerCompLogo:hover {
+    filter: brightness(0.8);
+    cursor: pointer;
+}
+
+
+/* TODO */
+@media all and (max-width: 950px) {
+    .bannerTitleHome > .typingAnimation {
+        font-size: calc(var(--font-size-x)*0.7*0.85);
+    }
+    .cursor {
+        width: 18px;
+        height: 40px;
+    }
+    .bannerTitleHome > .missionStatement,
+    .bannerTitlePost > .missionStatement {
+        margin-top: var(--medium-spacing);
+        white-space: normal;
+        font-weight: 600;
+        width: 80%;
+    }
+}
+@media all and (max-width: 800px) {
+    .bannerTitleHome > .typingAnimation {
+        white-space: normal;
+        width: 70%;
+        height: 2.5em;
+    }
+}
+@media all and (max-width: 600px) {
+    .bannerTitleHome > .typingAnimation {
+        font-size: calc(var(--font-size-x)*0.7*0.7);
+        width: 80%;
+    }
+    .cursor {
+        width: 14px;
+        height: 28px;
+    }
+    .bannerTitleHome > .missionStatement,
+    .bannerTitlePost > .missionStatement {
+        font-size: calc(var(--font-size-2) * 0.8);
+    }
+}
+@media all and (max-width: 450px) {
+    .bannerTitleHome > .typingAnimation {
+        font-size: calc(var(--font-size-x)*0.7*0.65);
+        width: 90%;
+    }
+}
+@media all and (max-width: 375px) {
+    .bannerTitleHome > .typingAnimation {
+        font-size: calc(var(--font-size-x)*0.7*0.55);
+        -webkit-text-stroke: 1.5px var(--text-color);
+    }
+    .cursor {
+        width: 12px;
+        height: 24px;
+    }
+}
+@media all and (max-width: 370px) {
+    .bannerTitleHome > .typingAnimation {
+        display: none;
+    }
+}
