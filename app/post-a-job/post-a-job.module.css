@@ -1,0 +1,16 @@
+.page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftColumn {
+    flex-basis: 50%; /* or the proportion you prefer */
+    padding-left: var(--banner-spacing);
+}
+
+.rightColumn {
+    flex-basis: 50%; /* or the proportion you prefer */
+    margin: calc(2*var(--banner-spacing)) auto;
+    padding-right: var(--banner-spacing);
+    background: var(--hl-color)
+}

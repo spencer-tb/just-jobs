@@ -1,0 +1,96 @@
+/* 
+
+From the documentation.
+
+...the DOM structure is similar to this:
+
+<div class="react-select-container">
+  <div class="react-select__control">
+    <div class="react-select__value-container">...</div>
+    <div class="react-select__indicators">...</div>
+  </div>
+  <div class="react-select__menu">
+    <div class="react-select__menu-list">
+      <div class="react-select__option">...</div>
+    </div>
+  </div>
+</div> 
+
+*/
+
+/* control */
+.react-select__control {
+    /* BUG with component - need important */
+    border-radius: 0 !important;
+    border: 2px solid black !important;
+    transition: all 0.3s ease;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    line-height: 1.5;
+    box-shadow: inset 0.25em 0.25em rgba(0, 0, 0, 0.1);
+}
+.react-select__control:hover,
+.react-select__control:active,
+.react-select__control:focus {
+    border-radius: 0;
+    border: 2px solid black;
+    background-color: #00f3f3;
+    transform: translate(-0.2em, -0.2em);
+    box-shadow: 0.35em 0.35em;
+    outline: none;
+}
+/* value-container */
+.react-select__value-container {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+/* multi-value */
+.react-select__multi-value {
+    border-radius: 5px !important;
+    display: flex;
+    flex-direction: row;
+    margin-right: 1em;
+    border: 2px solid black;
+    background-color: #f0f;
+}
+.react-select__multi-value__label {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.react-select__multi-value__remove:hover {
+    background-color: #fff;
+}
+
+/* menu */
+.react-select__menu {
+    border-radius: 0 !important;
+    border: 2px solid black !important;
+}
+/* menu-list */
+.react-select__menu-list {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-top: 0.25em;
+}
+/* option */
+.react-select__option {
+    border-radius: 0 !important;
+    border: 2px solid black !important;
+    transition: all 0.3s ease;
+    margin-bottom: 0.35em;
+    line-height: 1.5;
+    box-shadow: inset 0.25em 0.25em rgba(0, 0, 0, 0.1);
+}
+.react-select__option:hover,
+.react-select__option:active,
+.react-select__option:focus {
+    background-color: #fff;
+    border-radius: 0;
+    border: 2px solid black;
+    transform: translate(-0.2em, -0.2em);
+    box-shadow: 0.35em 0.35em;
+    outline: none;
+}
+.react-select__input {
+    text-transform: uppercase;
+}
