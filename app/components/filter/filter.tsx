@@ -4,28 +4,38 @@ import { useState, useEffect } from "react";
 import SearchField from "./search-field";
 import styles from "./filter.module.css";
 import { useTheme } from "../../theme-context";
+import { useRouter } from "next/navigation";
 import {
     JobsTagsOptions,
     JobsCountryOptions,
 } from "../../types/pocketbase-types";
 
 interface FilterProps {
-    onFilterChange: (tags: { tags: string[]; locations: string[] }) => void;
+    onFilterChange: (filters: { tags: string[]; locations: string[] }) => void;
 }
 
 function Filter(props: FilterProps) {
     const { onFilterChange } = props;
     const { isDarkTheme } = useTheme();
-
+    const router = useRouter();
     const [selectedTags, setSelectedTags] = useState<any[]>([]);
     const [selectedLocation, setSelectedLocation] = useState<any[]>([]);
-
-    // Call the callback function whenever selectedOptions change
 
     useEffect(() => {
         const tags = selectedTags.map((option) => option.value);
         const locations = selectedLocation.map((option) => option.value);
         onFilterChange({ tags, locations });
+
+        if (tags.length === 0 && locations.length === 0) {
+            // Do not change URL if no filters are selected
+            return;
+        }
+
+        const tagsParam = encodeURIComponent(tags.join(","));
+        const locationsParam = encodeURIComponent(locations.join(","));
+        const query = `?tags=${tagsParam}&locations=${locationsParam}`;
+
+        router.push(`/jobs${query}`);
     }, [selectedTags, selectedLocation]);
 
     return (
@@ -50,7 +60,6 @@ function Filter(props: FilterProps) {
                     />
                 </div>
             </div>
-            {/* Selected Tags */}
             <div className={styles.filterSelectedTags}>
                 {selectedTags.map((option, index) => (
                     <div key={index} className={styles.filterSelectedTag}>
