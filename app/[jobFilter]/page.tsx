@@ -2,15 +2,10 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useTheme } from "../theme-context";
-import Header from "../components/header/header";
-import Banner from "../components/banner/banner";
-import Jobs from "../components/jobs/jobs";
-import Footer from "../components/footer/footer";
+import BaseLayout from "../components/base-layout";
 import { PageType } from "../types/enums";
 
 const JobFilterPage: React.FC = () => {
-    const { isDarkTheme } = useTheme();
     const searchParams = useSearchParams();
     const [bannerTitle, setBannerTitle] = useState("AI Jobs");
     const [tag, setTag] = useState<string | undefined>(undefined);
@@ -37,37 +32,13 @@ const JobFilterPage: React.FC = () => {
         }
     }, [searchParams]);
 
-    useEffect(() => {
-        const root = document.documentElement;
-        root.style.setProperty(
-            "--wrap-tx-color",
-            isDarkTheme ? "var(--dark-wrap-tx)" : "var(--light-wrap-tx)"
-        );
-        root.style.setProperty(
-            "--tx-color",
-            isDarkTheme ? "var(--dark-tx)" : "var(--light-tx)"
-        );
-        root.style.setProperty(
-            "--bg-color",
-            isDarkTheme ? "var(--dark-bg)" : "var(--light-bg)"
-        );
-        root.style.setProperty(
-            "--hl-color",
-            isDarkTheme ? "var(--dark-hl)" : "var(--light-hl)"
-        );
-    }, [isDarkTheme]);
-
     return (
-        <div>
-            <Header />
-            <main>
-                <Banner type={PageType.FILTER} title={bannerTitle} />
-                <div className="mainContent">
-                    <Jobs tag={tag} location={location} />
-                </div>
-            </main>
-            <Footer />
-        </div>
+        <BaseLayout
+            pageType={PageType.FILTER}
+            bannerTitle={bannerTitle}
+            tag={tag}
+            location={location}
+        />
     );
 };
 

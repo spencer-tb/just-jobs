@@ -2,14 +2,26 @@
 
 import { useEffect } from "react";
 import { useTheme } from "../theme-context";
-import Header from "../components/header/header";
-import Banner from "../components/banner/banner";
-import Jobs from "../components/jobs/jobs";
-import Footer from "../components/footer/footer";
+import Header from "./header/header";
+import Banner from "./banner/banner";
+import Jobs from "./jobs/jobs";
+import Footer from "./footer/footer";
 import { PageType } from "../types/enums";
 
-const Home: React.FC = () => {
-    const { isDarkTheme, toggleTheme } = useTheme();
+interface BaseLayoutProps {
+    pageType: PageType;
+    bannerTitle: string;
+    tag?: string;
+    location?: string;
+}
+
+const BaseLayout: React.FC<BaseLayoutProps> = ({
+    pageType,
+    bannerTitle,
+    tag,
+    location,
+}) => {
+    const { isDarkTheme } = useTheme();
 
     useEffect(() => {
         const root = document.documentElement;
@@ -33,11 +45,11 @@ const Home: React.FC = () => {
 
     return (
         <div>
-            <Header type={PageType.HOME} />
+            <Header type={pageType} />
             <main>
-                <Banner type={PageType.HOME} title="AI Jobs" />
+                <Banner type={pageType} title={bannerTitle} />
                 <div className="mainContent">
-                    <Jobs />
+                    <Jobs tag={tag} location={location} />
                 </div>
             </main>
             <Footer />
@@ -45,4 +57,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default BaseLayout;
