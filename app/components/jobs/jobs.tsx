@@ -3,22 +3,29 @@
 import { JobsResponse } from "../../types/pocketbase-types";
 import PocketBase, { ListResult } from "pocketbase";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import JobCard from "./job-card";
 import { pbUrl, pbUser, pbPass } from "./helpers";
 import styles from "./jobs.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Filter from "../filter/filter";
+
 const pb = new PocketBase(pbUrl);
 
 interface Filters {
     tags: string[];
     locations: string[];
 }
+interface JobsProps {
+    tag?: string;
+    location?: string;
+}
 
-function Jobs() {
+function Jobs({ tag, location }: JobsProps) {
+    const searchParams = useSearchParams();
     const [filters, setFilters] = useState<Filters>({
-        tags: [],
-        locations: [],
+        tags: tag ? [tag] : [],
+        locations: location ? [location] : [],
     });
     const [resultList, setResultList] = useState<ListResult<JobsResponse>>();
     const [hasMoreItems, setHasMoreItems] = useState(true);
@@ -26,32 +33,35 @@ function Jobs() {
     const itemsPerPage = 20;
 
     useEffect(() => {
+        const tagsParam = searchParams.get("tags") || "";
+        const locationsParam = searchParams.get("locations") || "";
+        const tags = tagsParam.split(",").filter(Boolean);
+        const locations = locationsParam.split(",").filter(Boolean);
+        setFilters({ tags, locations });
+    }, [searchParams]);
+
+    useEffect(() => {
         setPage(1);
         setHasMoreItems(true);
-        fetchJobs();
+        setResultList(undefined);
+        fetchJobs(1, filters);
     }, [filters]);
 
-    const fetchJobs = async () => {
-        if (!hasMoreItems) {
-            // All items have been fetched, no need to fetch again
-            return;
-        }
+    const fetchJobs = async (page: number, filters: Filters) => {
         try {
             const filter = createPocketBaseQuery(filters);
             await pb.admins.authWithPassword(pbUser, pbPass);
-            console.log(filter);
             const newResultList: ListResult<JobsResponse> = await pb
                 .collection("jobs")
                 .getList(page, itemsPerPage, {
                     filter: filter,
                     sort: "-updated_ats",
                 });
+
             if (newResultList.items.length > 0) {
                 if (page === 1) {
-                    // This is the first page, replace the result list
                     setResultList(newResultList);
                 } else {
-                    // This is a subsequent page, append to the result list
                     setResultList((prevState) => ({
                         ...newResultList,
                         items: prevState
@@ -59,14 +69,13 @@ function Jobs() {
                             : newResultList.items,
                     }));
                 }
-
                 if (newResultList.items.length < itemsPerPage) {
-                    setHasMoreItems(false); // we've reached the end
+                    setHasMoreItems(false);
                 } else {
-                    setPage((prevPage) => prevPage + 1); // increment the page only if there are more items
+                    setPage((prevPage) => prevPage + 1);
                 }
             } else {
-                setHasMoreItems(false); // we've reached the end
+                setHasMoreItems(false);
             }
         } catch (error) {
             console.error("Error fetching data from PocketBase:", error);
@@ -74,13 +83,11 @@ function Jobs() {
     };
 
     const loadMoreItems = () => {
-        fetchJobs();
+        fetchJobs(page, filters);
     };
 
     const handleFiltersChange = (newFilters: Filters) => {
         setFilters(newFilters);
-        setResultList(undefined);
-        setPage(1);
     };
 
     return (
@@ -90,11 +97,8 @@ function Jobs() {
                 className={styles.infiniteScroll}
                 dataLength={resultList?.items.length ?? 0}
                 next={loadMoreItems}
-                hasMore={
-                    resultList?.items?.length !== undefined &&
-                    resultList?.items?.length > 0
-                }
-                loader={""}
+                hasMore={hasMoreItems}
+                loader={<h4>Loading...</h4>}
             >
                 {resultList?.items.map((item: JobsResponse) => (
                     <JobCard key={item.id} job={item} />
@@ -104,11 +108,9 @@ function Jobs() {
     );
 }
 
-// Helper query function, creates a pocketbase filter query
 function createPocketBaseQuery(filters: Filters) {
     const { tags, locations } = filters;
 
-    // and'd filter logic
     const tagsQuery =
         tags.length > 0 ? `tags ~ '${tags.join("' && tags ~ '")}'` : "";
     const locationsQuery =
@@ -117,7 +119,6 @@ function createPocketBaseQuery(filters: Filters) {
             : "";
     const remoteQuery = `remote="💻 Remote"`;
 
-    // filter query to pb
     const query = [tagsQuery, locationsQuery, remoteQuery]
         .filter(Boolean)
         .join(" && ");

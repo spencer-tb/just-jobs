@@ -16,7 +16,7 @@ function Banner({ type, title }: BannerProps) {
     let bannerContent;
 
     switch (type) {
-        case PageType.CATEGORY:
+        case PageType.FILTER:
         default:
             bannerContent = (
                 <>
