@@ -4,7 +4,9 @@ A React/Next.js/Typescript/Pocketbase front-end jobs board template.
 
 ## What is this project?
 
-This is a project resurface I initially worked on privately in 2022. This acts as an open-source front-end for those who wish to create a simple jobs board using Pocketbase as a back-end.
+This is a project resurface I initially worked on privately in 2022 with [@zsxkib](https://github.com/zsxkib). As we both got "real jobs" the project slowly died. 
+
+Now its coming back to life and acts as an open-source front-end for those who wish to create a simple jobs board using Pocketbase as a back-end.
 
 The aim is to create a generalized job board pipeline where developers can simply define the type of job board they want to create within a config file, such that the rest is magic.
 
