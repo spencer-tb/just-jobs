@@ -1,0 +1,84 @@
+{
+  "id": "climate",
+  "name": "Just Jobs — Climate",
+  "domain": "justjobs.green",
+  "tagline": "Careers fighting the climate crisis",
+  "keywords": [
+    "climate",
+    "climate change",
+    "environment",
+    "sustainability",
+    "clean energy",
+    "renewable energy",
+    "conservation",
+    "net zero",
+    "carbon"
+  ],
+  "serpQueries": [
+    "climate change jobs",
+    "sustainability jobs remote",
+    "clean energy jobs",
+    "environmental jobs",
+    "conservation jobs"
+  ],
+  "atsBoards": {
+    "greenhouse": [
+      "greenpeace",
+      "humanrightswatch",
+      "acumen",
+      "winrock"
+    ],
+    "lever": [
+      "sierraclub"
+    ]
+  },
+  "apiSources": [
+    {
+      "type": "reliefweb",
+      "filters": {
+        "type": ["job"],
+        "theme": ["Climate Change and Environment"]
+      }
+    }
+  ],
+  "tags": {
+    "policy": [
+      "policy",
+      "advocacy",
+      "government relations",
+      "lobbying",
+      "regulatory"
+    ],
+    "engineering": [
+      "engineer",
+      "solar",
+      "wind",
+      "battery",
+      "grid",
+      "energy storage"
+    ],
+    "research": [
+      "researcher",
+      "scientist",
+      "data analyst",
+      "modeling",
+      "assessment"
+    ],
+    "conservation": [
+      "conservation",
+      "wildlife",
+      "biodiversity",
+      "habitat",
+      "restoration",
+      "ecology"
+    ]
+  },
+  "theme": {
+    "primaryColor": "#16a34a",
+    "accentColor": "#15803d"
+  },
+  "seo": {
+    "titleTemplate": "%s | Just Jobs — Climate Careers",
+    "description": "Find climate change, sustainability, and environmental jobs. Clean energy, conservation, and climate policy careers."
+  }
+}

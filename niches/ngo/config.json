@@ -1,0 +1,115 @@
+{
+  "id": "ngo",
+  "name": "Just Jobs — NGO",
+  "domain": "justjobs.org",
+  "tagline": "Find meaningful work in the nonprofit sector",
+  "keywords": [
+    "ngo",
+    "nonprofit",
+    "non-profit",
+    "charity",
+    "humanitarian",
+    "development",
+    "social impact"
+  ],
+  "serpQueries": [
+    "project manager charity jobs UK remote",
+    "grant manager NGO jobs UK remote",
+    "programme manager charity Scotland",
+    "climate change project manager jobs",
+    "environmental charity jobs UK",
+    "charity jobs Edinburgh",
+    "NGO jobs Scotland remote",
+    "grant management charity UK",
+    "programme coordinator NGO remote UK",
+    "international development jobs remote",
+    "humanitarian programme manager",
+    "climate change NGO jobs remote",
+    "charity project manager remote",
+    "nonprofit grant writer jobs UK"
+  ],
+  "atsBoards": {
+    "greenhouse": [
+      "rescue",
+      "greenpeace",
+      "aclu",
+      "humanrightswatch",
+      "acumen",
+      "givedirectly",
+      "oneacrefund",
+      "omidyarnetwork",
+      "luminate",
+      "clintonfoundation",
+      "ideo",
+      "southernpovertylawcenter",
+      "winrock",
+      "pact",
+      "counterpart"
+    ],
+    "lever": [
+      "sierraclub",
+      "charitywater",
+      "brookings",
+      "abt"
+    ]
+  },
+  "apiSources": [
+    {
+      "type": "reliefweb",
+      "filters": {
+        "type": ["job"]
+      }
+    }
+  ],
+  "tags": {
+    "project-management": [
+      "project manager",
+      "program manager",
+      "programme manager",
+      "project coordinator",
+      "project officer",
+      "PMO"
+    ],
+    "grant-management": [
+      "grant manager",
+      "grants officer",
+      "grant writer",
+      "grant coordinator",
+      "grant compliance",
+      "grants management",
+      "proposal writer"
+    ],
+    "climate": [
+      "climate",
+      "environmental",
+      "sustainability",
+      "clean energy",
+      "carbon",
+      "net zero",
+      "renewable"
+    ],
+    "fundraising": [
+      "fundraiser",
+      "fundraising",
+      "development officer",
+      "donor relations",
+      "major gifts",
+      "philanthropy"
+    ],
+    "monitoring-evaluation": [
+      "M&E",
+      "monitoring and evaluation",
+      "MEAL",
+      "impact measurement",
+      "results framework"
+    ]
+  },
+  "theme": {
+    "primaryColor": "#059669",
+    "accentColor": "#0d9488"
+  },
+  "seo": {
+    "titleTemplate": "%s | Just Jobs — NGO Careers",
+    "description": "Find the latest NGO and nonprofit job opportunities worldwide. Project management, grant management, climate, and humanitarian careers."
+  }
+}
